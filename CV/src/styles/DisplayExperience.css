@@ -1,0 +1,48 @@
+.display-container {
+  width: 100%;
+  display: flex;
+  flex: 2 1 0;
+  flex-direction: column;
+}
+
+.experience-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-size: calc(0.2rem + 1vw);
+}
+
+.experience-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(14, 55, 78, 0.07);
+  border-radius: 1rem;
+  padding: 5px 0 5px 0;
+}
+
+.wraper {
+  display: flex;
+}
+
+.wraper > * {
+  width: 50%;
+}
+
+.date-container {
+  display: flex;
+  gap: 5px;
+}
+
+.company-description-container > * {
+  padding-left: 1rem;
+}
+
+.date-location-container > * {
+  padding-left: 1rem;
+}
+
+.description {
+  word-wrap: break-word;
+}

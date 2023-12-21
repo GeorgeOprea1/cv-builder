@@ -1,0 +1,57 @@
+.education-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-size: calc(0.2rem + 1vw);
+}
+
+.education-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(14, 55, 78, 0.07);
+  border-radius: 1rem;
+  padding: 5px 0 5px 0;
+}
+
+.wraper {
+  display: flex;
+  width: 100%;
+}
+
+.wraper > * {
+  word-wrap: break-word;
+}
+
+.btn-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-location-container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.date-location-container > * {
+  flex: 1;
+  padding-left: 1rem;
+}
+
+.date-container {
+  display: flex;
+  gap: 5px;
+}
+
+.school-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.school-container > * {
+  flex: 1;
+  padding-left: 1rem;
+}

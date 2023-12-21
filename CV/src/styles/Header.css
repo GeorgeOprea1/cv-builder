@@ -1,0 +1,10 @@
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  font-size: calc(2rem + 1vw);
+}
