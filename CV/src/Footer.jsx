@@ -9,7 +9,7 @@ const Footer = () => {
         href="https://github.com/GeorgeOprea1/cv-builder"
         target="_blank"
         rel="noreferrer"
-        alt="github icon"
+        aria-label="Click here to see the github repository"
       >
         <FaGithub id="icon" />
       </a>
