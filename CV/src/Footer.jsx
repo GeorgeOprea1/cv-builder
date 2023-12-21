@@ -10,7 +10,7 @@ const Footer = () => {
         target="_blank"
         rel="noreferrer"
       >
-        <FaGithub id="icon" />
+        <FaGithub id="icon" alt="github icon" />
       </a>
     </footer>
   );
