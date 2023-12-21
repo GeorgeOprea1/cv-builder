@@ -5,7 +5,11 @@ const Footer = () => {
   return (
     <footer className="footer">
       <p>Copyright George Oprea © 2023</p>
-      <a href="https://github.com/GeorgeOprea1/cvBuilder" target="_blank">
+      <a
+        href="https://github.com/GeorgeOprea1/cv-builder"
+        target="_blank"
+        rel="noreferrer"
+      >
         <FaGithub id="icon" />
       </a>
     </footer>
