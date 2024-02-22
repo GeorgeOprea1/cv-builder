@@ -17,6 +17,44 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [educationData, setEducationData] = useState([]);
+  const [experienceData, setExperienceData] = useState([]);
+
+  function loadExample() {
+    setFullName("John Doe");
+    setEmail("john.doe@email.com");
+    setPhoneNumber("(555)-123-4567");
+    setAddress("123 Main Street, Anytown, USA");
+    setExperienceData([
+      {
+        company: "ABC Tech",
+        position: "Software Engineer",
+        description:
+          "Developed and maintained web applications using ReactJS and Node.js. Led a team of developers for Project X, resulting in a 20% increase in user engagement.",
+        startExDate: "January 2019",
+        endExDate: "Present",
+        locationEx: "Anytown, USA",
+      },
+      {
+        company: "XYZ Corporation",
+        position: "IT Support Intern",
+        description:
+          "Provided technical support to employees, troubleshooting hardware and software issues. Assisted in network maintenance and system upgrades.",
+        endExDate: "December 2018",
+        startExDate: "June 2017",
+        locationEx: "Portland, USA",
+      },
+    ]);
+    setEducationData([
+      {
+        school: "Anytown University",
+        degree: "Bachelor of Science in Computer Sience",
+        startDate: "January 2015",
+        endDate: "May 2019",
+        location: "Anytown, USA",
+      },
+    ]);
+  }
 
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
@@ -33,15 +71,6 @@ const App = () => {
   const handleAddressChange = (e) => {
     setAddress(e.target.value);
   };
-
-  const personalInfoDeleteBtn = () => {
-    setFullName("");
-    setAddress("");
-    setEmail("");
-    setPhoneNumber("");
-  };
-  const [educationData, setEducationData] = useState([]);
-  const [experienceData, setExperienceData] = useState([]);
 
   const handleEducationSave = (data) => {
     const updatedEducationData = [...educationData, data];
@@ -61,6 +90,13 @@ const App = () => {
   const handleExperienceDelete = (index) => {
     const updatedExperienceData = experienceData.filter((_, i) => i !== index);
     setExperienceData(updatedExperienceData);
+  };
+
+  const personalInfoDeleteBtn = () => {
+    setFullName("");
+    setAddress("");
+    setEmail("");
+    setPhoneNumber("");
   };
 
   function deleteAll() {
@@ -115,6 +151,7 @@ const App = () => {
           <TemplateLoader
             deleteAll={deleteAll}
             onDownload={handleDownloadPDF}
+            loadExample={loadExample}
           />
           <EducationComponent
             onSave={handleEducationSave}

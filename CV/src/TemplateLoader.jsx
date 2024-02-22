@@ -15,7 +15,9 @@ const TemplateLoader = (props) => {
         </button>
       </div>
       <div className="load-example-container">
-        <button id="load-example">Load Example</button>
+        <button id="load-example" onClick={props.loadExample}>
+          Load Example
+        </button>
       </div>
     </>
   );
