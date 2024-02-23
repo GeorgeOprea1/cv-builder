@@ -86,10 +86,33 @@ const App = () => {
     setPhoneNumber("(555)-123-4567");
     setAddress("123 Main Street, Anytown, USA");
     setExperienceData([
-      // ... (example data)
+      {
+        company: "ABC Tech",
+        position: "Software Engineer",
+        description:
+          "Developed and maintained web applications using ReactJS and Node.js. Led a team of developers for Project X, resulting in a 20% increase in user engagement.",
+        startExDate: "January 2019",
+        endExDate: "Present",
+        locationEx: "Anytown, USA",
+      },
+      {
+        company: "XYZ Corporation",
+        position: "IT Support Intern",
+        description:
+          "Provided technical support to employees, troubleshooting hardware and software issues. Assisted in network maintenance and system upgrades.",
+        endExDate: "December 2018",
+        startExDate: "June 2017",
+        locationEx: "Portland, USA",
+      },
     ]);
     setEducationData([
-      // ... (example data)
+      {
+        school: "Anytown University",
+        degree: "Bachelor of Science in Computer Sience",
+        startDate: "January 2015",
+        endDate: "May 2019",
+        location: "Anytown, USA",
+      },
     ]);
   };
 
