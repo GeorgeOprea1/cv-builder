@@ -26,6 +26,7 @@
   width: 100%;
   flex: 1 2 0;
   color: #fff;
+  font-size: calc(min(0.2rem + 1vw, 1.3rem));
 }
 
 .resume-contact > * {

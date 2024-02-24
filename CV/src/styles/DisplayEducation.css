@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  font-size: calc(0.2rem + 1vw);
+  font-size: calc(min(0.2rem + 1vw, 1.3rem));
 }
 
 .education-header {
