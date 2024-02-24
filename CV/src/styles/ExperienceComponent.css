@@ -1,4 +1,4 @@
-.education-component-container {
+.experience-component-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,4 +83,40 @@
 .btn-container {
   display: flex;
   gap: 1rem;
+}
+
+.saved-experience-container {
+  padding: 1rem 0 1rem 0;
+  width: 95%;
+  border-radius: 1rem;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid #ddd;
+}
+.saved-experience-container > p {
+  flex: 3;
+  text-align: center;
+}
+
+.saved-experience-container:hover {
+  background-color: rgba(14, 55, 78, 0.07);
+}
+
+#deleteBtn2 {
+  flex: 1;
+  width: 10%;
+  color: red;
+  margin-top: 0.5rem;
+  padding: 7px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  background-color: #fff;
 }

@@ -61,7 +61,16 @@ const App = () => {
   };
 
   const deleteEdSection = () => setEducationData([]);
+  const deleteEducationAtIndex = (index) => {
+    const updatedEducationData = educationData.filter((_, i) => i !== index);
+    setEducationData(updatedEducationData);
+  };
+
   const deleteExSection = () => setExperienceData([]);
+  const deleteExperienceAtIndex = (index) => {
+    const updatedExperienceData = experienceData.filter((_, i) => i !== index);
+    setExperienceData(updatedExperienceData);
+  };
 
   const handleDownloadPDF = () => {
     const sectionToCapture = document.getElementById("downloadSection");
@@ -140,10 +149,14 @@ const App = () => {
           <EducationComponent
             onSave={handleEducationSave}
             deleteEducation={deleteEdSection}
+            savedEducations={educationData}
+            deleteEducationAtIndex={deleteEducationAtIndex}
           />
           <ExperienceComponent
             onSave={handleExperienceSave}
             deleteExperience={deleteExSection}
+            deleteExperienceAtIndex={deleteExperienceAtIndex}
+            savedExperience={experienceData}
           />
         </div>
 

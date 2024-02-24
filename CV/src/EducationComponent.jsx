@@ -3,8 +3,14 @@ import "./styles/EducationComponent.css";
 import { FaGraduationCap } from "react-icons/fa6";
 import { FaChevronDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 
-const EducationComponent = ({ onSave, deleteEducation }) => {
+const EducationComponent = ({
+  onSave,
+  savedEducations,
+  deleteEducation,
+  deleteEducationAtIndex,
+}) => {
   const [school, setSchool] = useState("");
   const [degree, setDegree] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -12,9 +18,9 @@ const EducationComponent = ({ onSave, deleteEducation }) => {
   const [location, setLocation] = useState("");
   const [edForm, setEdForm] = useState(false);
 
-  function handleClick() {
+  const handleClick = () => {
     setEdForm(!edForm);
-  }
+  };
 
   const handleSave = () => {
     if (
@@ -26,7 +32,6 @@ const EducationComponent = ({ onSave, deleteEducation }) => {
     ) {
       onSave({ school, degree, startDate, endDate, location });
       setDegree("");
-      setSchool("");
       setEndDate("");
       setStartDate("");
       setSchool("");
@@ -42,7 +47,7 @@ const EducationComponent = ({ onSave, deleteEducation }) => {
         </h1>
         {edForm ? <FaChevronUp /> : <FaChevronDown />}
       </button>
-      {edForm ? (
+      {edForm && (
         <>
           <div className="education-component-container">
             <label htmlFor="school">School</label>
@@ -103,9 +108,16 @@ const EducationComponent = ({ onSave, deleteEducation }) => {
             </button>
           </div>
         </>
-      ) : (
-        ""
       )}
+      {savedEducations.map((education, index) => (
+        <div key={index} className="saved-education-container">
+          <p>{education.school}</p>
+
+          <button id="deleteBtn2" onClick={() => deleteEducationAtIndex(index)}>
+            <FaTrashAlt />
+          </button>
+        </div>
+      ))}
     </div>
   );
 };

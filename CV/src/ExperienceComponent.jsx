@@ -1,10 +1,18 @@
 import { useState } from "react";
 import "./styles/ExperienceComponent.css";
-import { FaSuitcase } from "react-icons/fa";
-import { FaChevronDown } from "react-icons/fa6";
-import { FaChevronUp } from "react-icons/fa";
+import {
+  FaSuitcase,
+  FaChevronDown,
+  FaChevronUp,
+  FaTrashAlt,
+} from "react-icons/fa";
 
-const ExperienceComponent = ({ onSave, deleteExperience }) => {
+const ExperienceComponent = ({
+  onSave,
+  savedExperience,
+  deleteExperience,
+  deleteExperienceAtIndex,
+}) => {
   const [company, setCompany] = useState("");
   const [position, setPosition] = useState("");
   const [startExDate, setStartExDate] = useState("");
@@ -52,7 +60,7 @@ const ExperienceComponent = ({ onSave, deleteExperience }) => {
         </h1>
         {exForm ? <FaChevronUp /> : <FaChevronDown />}
       </button>
-      {exForm ? (
+      {exForm && (
         <>
           <div className="experience-component-container">
             <label htmlFor="company">Company</label>
@@ -65,7 +73,7 @@ const ExperienceComponent = ({ onSave, deleteExperience }) => {
             />
           </div>
           <div className="experience-component-container">
-            <label htmlFor="position">Position </label>
+            <label htmlFor="position">Position</label>
             <input
               id="position"
               type="text"
@@ -75,9 +83,9 @@ const ExperienceComponent = ({ onSave, deleteExperience }) => {
             />
           </div>
           <div className="experience-component-container">
-            <label htmlFor="Start">Start Date</label>
+            <label htmlFor="startExDate">Start Date</label>
             <input
-              id="Start"
+              id="startExDate"
               type="text"
               placeholder="Start Date"
               value={startExDate}
@@ -85,9 +93,9 @@ const ExperienceComponent = ({ onSave, deleteExperience }) => {
             />
           </div>
           <div className="experience-component-container">
-            <label htmlFor="End">End Date</label>
+            <label htmlFor="endExDate">End Date</label>
             <input
-              id="End"
+              id="endExDate"
               type="text"
               placeholder="End Date"
               value={endExDate}
@@ -95,9 +103,9 @@ const ExperienceComponent = ({ onSave, deleteExperience }) => {
             />
           </div>
           <div className="experience-component-container">
-            <label htmlFor="location">Location</label>
+            <label htmlFor="locationEx">Location</label>
             <input
-              id="location"
+              id="locationEx"
               type="text"
               placeholder="Location"
               value={locationEx}
@@ -123,9 +131,18 @@ const ExperienceComponent = ({ onSave, deleteExperience }) => {
             </button>
           </div>
         </>
-      ) : (
-        ""
       )}
+      {savedExperience.map((experience, index) => (
+        <div key={index} className="saved-experience-container">
+          <p>{experience.company}</p>
+          <button
+            id="deleteBtn2"
+            onClick={() => deleteExperienceAtIndex(index)}
+          >
+            <FaTrashAlt />
+          </button>
+        </div>
+      ))}
     </div>
   );
 };
