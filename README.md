@@ -1,4 +1,4 @@
-#[CV Builder App](https://georgeoprea1.github.io/cv-builder/)
+# [CV Builder App](https://georgeoprea1.github.io/cv-builder/)
 
 ![CV-UI](https://github.com/GeorgeOprea1/cv-builder/assets/127131773/e37d5842-f2b0-44ea-893a-ce54f776b09b)
 
