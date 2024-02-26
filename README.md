@@ -11,6 +11,7 @@ The [CV Builder App](https://georgeoprea1.github.io/cv-builder/) is a web applic
 - **Real-Time Preview:** Instantly preview the changes made to the CV layout and content.
 - **Download Options:** Ability to download the created CV for printing or sharing digitally.
 - **Responsive Design:** Ensures the CV looks great across different devices and screen sizes.
+- **Edit/Delete Functionality:** Enables seamless modification and removal of content in each education/experience field post-saving, enhancing user control and customization.
 
 ## Technologies Used
 
