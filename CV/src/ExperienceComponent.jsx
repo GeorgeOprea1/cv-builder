@@ -5,6 +5,7 @@ import {
   FaChevronDown,
   FaChevronUp,
   FaTrashAlt,
+  FaEdit,
 } from "react-icons/fa";
 
 const ExperienceComponent = ({
@@ -20,35 +21,51 @@ const ExperienceComponent = ({
   const [locationEx, setLocationEx] = useState("");
   const [description, setDescription] = useState("");
   const [exForm, setExForm] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
 
   function handleClick() {
     setExForm(!exForm);
+    setEditIndex(null);
   }
 
+  const handleEditExperience = (index) => {
+    const selectedExperience = savedExperience[index];
+    setEditIndex(index);
+    setCompany(selectedExperience.company);
+    setPosition(selectedExperience.position);
+    setStartExDate(selectedExperience.startExDate);
+    setEndExDate(selectedExperience.endExDate);
+    setLocationEx(selectedExperience.locationEx);
+    setDescription(selectedExperience.description);
+    setExForm(true);
+  };
+
   const handleSave = () => {
-    if (
-      company.trim() !== "" &&
-      description.trim() !== "" &&
-      position.trim() !== "" &&
-      startExDate.trim() !== "" &&
-      endExDate.trim() !== "" &&
-      locationEx.trim() !== ""
-    ) {
-      onSave({
-        company,
-        description,
-        position,
-        endExDate,
-        locationEx,
-        startExDate,
-      });
-      setCompany("");
-      setPosition("");
-      setStartExDate("");
-      setEndExDate("");
-      setLocationEx("");
-      setDescription("");
+    const editedExperience = {
+      company,
+      position,
+      startExDate,
+      endExDate,
+      locationEx,
+      description,
+    };
+
+    if (editIndex !== null) {
+      const updatedExperiences = [...savedExperience];
+      updatedExperiences[editIndex] = editedExperience;
+      onSave(updatedExperiences);
+      setEditIndex(null);
+    } else {
+      onSave([...savedExperience, editedExperience]);
     }
+
+    setCompany("");
+    setPosition("");
+    setStartExDate("");
+    setEndExDate("");
+    setLocationEx("");
+    setDescription("");
+    setExForm(false);
   };
 
   return (
@@ -135,12 +152,17 @@ const ExperienceComponent = ({
       {savedExperience.map((experience, index) => (
         <div key={index} className="saved-experience-container">
           <p>{experience.company}</p>
-          <button
-            id="deleteBtn2"
-            onClick={() => deleteExperienceAtIndex(index)}
-          >
-            <FaTrashAlt />
-          </button>
+          <div className="edit-btns-container">
+            <button
+              id="deleteBtn2"
+              onClick={() => deleteExperienceAtIndex(index)}
+            >
+              <FaTrashAlt className="saved-icon" />
+            </button>
+            <button id="editBtn" onClick={() => handleEditExperience(index)}>
+              <FaEdit className="saved-icon" />
+            </button>
+          </div>
         </div>
       ))}
     </div>

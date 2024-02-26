@@ -4,6 +4,7 @@ import { FaGraduationCap } from "react-icons/fa6";
 import { FaChevronDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 
 const EducationComponent = ({
   onSave,
@@ -17,26 +18,47 @@ const EducationComponent = ({
   const [endDate, setEndDate] = useState("");
   const [location, setLocation] = useState("");
   const [edForm, setEdForm] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
 
   const handleClick = () => {
     setEdForm(!edForm);
   };
 
+  const handleEditEducation = (index) => {
+    const selectedEducation = savedEducations[index];
+    setEditIndex(index);
+    setSchool(selectedEducation.school);
+    setDegree(selectedEducation.degree);
+    setStartDate(selectedEducation.startDate);
+    setEndDate(selectedEducation.endDate);
+    setLocation(selectedEducation.location);
+    setEdForm(true);
+  };
+
   const handleSave = () => {
-    if (
-      school.trim() !== "" &&
-      degree.trim() !== "" &&
-      startDate.trim() !== "" &&
-      endDate.trim() !== "" &&
-      location.trim() !== ""
-    ) {
-      onSave({ school, degree, startDate, endDate, location });
-      setDegree("");
-      setEndDate("");
-      setStartDate("");
-      setSchool("");
-      setLocation("");
+    const editedEducation = {
+      school,
+      degree,
+      startDate,
+      endDate,
+      location,
+    };
+
+    if (editIndex !== null) {
+      const updatedEducations = [...savedEducations];
+      updatedEducations[editIndex] = editedEducation;
+      onSave(updatedEducations);
+      setEditIndex(null);
+      setEdForm(false);
+    } else {
+      onSave([...savedEducations, editedEducation]);
     }
+
+    setDegree("");
+    setEndDate("");
+    setStartDate("");
+    setSchool("");
+    setLocation("");
   };
 
   return (
@@ -112,10 +134,17 @@ const EducationComponent = ({
       {savedEducations.map((education, index) => (
         <div key={index} className="saved-education-container">
           <p>{education.school}</p>
-
-          <button id="deleteBtn2" onClick={() => deleteEducationAtIndex(index)}>
-            <FaTrashAlt />
-          </button>
+          <div className="edit-btns-container">
+            <button
+              id="deleteBtn2"
+              onClick={() => deleteEducationAtIndex(index)}
+            >
+              <FaTrashAlt className="saved-icon" />
+            </button>
+            <button id="editBtn" onClick={() => handleEditEducation(index)}>
+              <FaEdit className="saved-icon" />
+            </button>
+          </div>
         </div>
       ))}
     </div>

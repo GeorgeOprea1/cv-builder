@@ -25,14 +25,12 @@ const App = () => {
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
   const handleAddressChange = (e) => setAddress(e.target.value);
 
-  const handleEducationSave = (data) => {
-    const updatedEducationData = [...educationData, data];
-    setEducationData(updatedEducationData);
+  const handleEducationSave = (updatedEducations) => {
+    setEducationData(updatedEducations);
   };
 
-  const handleExperienceSave = (data) => {
-    const updatedExperienceData = [...experienceData, data];
-    setExperienceData(updatedExperienceData);
+  const handleExperienceSave = (updatedExperiences) => {
+    setExperienceData(updatedExperiences);
   };
 
   const handleEducationDelete = (index) => {
